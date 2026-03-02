@@ -1,0 +1,32 @@
+<MudDialog>
+    <TitleContent>
+        <MudText Typo="Typo.h6">@Title</MudText>
+    </TitleContent>
+    <DialogContent>
+        <MudStack>
+            <MudTextField @bind-Value="_model.Title" Label="Title" Required="true"
+                          RequiredError="Title is required." />
+            <MudTextField @bind-Value="_model.Publisher" Label="Publisher" Required="true"
+                          RequiredError="Publisher is required." />
+            <MudTextField @bind-Value="_model.Developer" Label="Developer" Required="true"
+                          RequiredError="Developer is required." />
+            <MudTextField @bind-Value="_model.Barcode" Label="Barcode" />
+            <MudSelect @bind-Value="_model.Media" Label="Media">
+                @foreach (MediaType media in Enum.GetValues(typeof(MediaType)))
+                {
+                    <MudSelectItem Value="@media">@media</MudSelectItem>
+                }
+            </MudSelect>
+            <MudSelect @bind-Value="_model.Packaging" Label="Packaging">
+                @foreach (PackagingType packaging in Enum.GetValues(typeof(PackagingType)))
+                {
+                    <MudSelectItem Value="@packaging">@packaging</MudSelectItem>
+                }
+            </MudSelect>
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="Submit">Save</MudButton>
+    </DialogActions>
+</MudDialog>

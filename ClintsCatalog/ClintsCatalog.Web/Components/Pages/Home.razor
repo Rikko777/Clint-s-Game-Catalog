@@ -1,7 +1,62 @@
-﻿@page "/"
+@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Clint's Game Catalog</PageTitle>
 
-<h1>Hello, world!</h1>
+<MudStack Row="true" Class="mb-4" AlignItems="AlignItems.Center">
+    <MudText Typo="Typo.h4">Game Catalog</MudText>
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" Color="Color.Primary"
+               StartIcon="@Icons.Material.Filled.Add" OnClick="OpenAddDialog">
+        Add Game
+    </MudButton>
+</MudStack>
 
-Welcome to your new app.
+<MudPaper Class="pa-4 mb-4" Elevation="2">
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudTextField T="string" Label="Search by title, publisher or developer"
+                          Immediate="true" DebounceInterval="300" TextChanged="ApplyFilter"
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" />
+        </MudItem>
+        <MudItem xs="12" md="3">
+            <MudSelect T="MediaType?" Value="_selectedMedia" Label="Media"
+                       Clearable="true" ValueChanged="OnMediaChanged">
+                @foreach (MediaType media in Enum.GetValues(typeof(MediaType)))
+                {
+                    <MudSelectItem T="MediaType?" Value="@((MediaType?)media)">@media</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" md="3">
+            <MudSelect T="PackagingType?" Value="_selectedPackaging" Label="Packaging"
+                       Clearable="true" ValueChanged="OnPackagingChanged">
+                @foreach (PackagingType packaging in Enum.GetValues(typeof(PackagingType)))
+                {
+                    <MudSelectItem T="PackagingType?" Value="@((PackagingType?)packaging)">@packaging</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
+
+<MudDataGrid T="GameTitle" Items="@_games" SortMode="SortMode.Multiple"
+             Hover="true" Striped="true" Elevation="2">
+    <Columns>
+        <PropertyColumn Property="g => g.Title" Title="Title" />
+        <PropertyColumn Property="g => g.Publisher" Title="Publisher" />
+        <PropertyColumn Property="g => g.Developer" Title="Developer" />
+        <PropertyColumn Property="g => g.Barcode" Title="Barcode" />
+        <PropertyColumn Property="g => g.Media" Title="Media" />
+        <PropertyColumn Property="g => g.Packaging" Title="Packaging" />
+        <TemplateColumn Title="Actions" Sortable="false">
+            <CellTemplate>
+                <MudStack Row="true">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary"
+                                   OnClick="@(() => OpenEditDialog(context.Item))" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error"
+                                   OnClick="@(() => DeleteAsync(context.Item))" />
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>
