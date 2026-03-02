@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ClintsCatalog.Core/ClintsCatalog.Core.csproj" />
+  <Project Path="ClintsCatalog.Data/ClintsCatalog.Data.csproj" />
+  <Project Path="ClintsCatalog.Tests/ClintsCatalog.Tests.csproj" />
+  <Project Path="ClintsCatalog.Web/ClintsCatalog.Web.csproj" />
+</Solution>
