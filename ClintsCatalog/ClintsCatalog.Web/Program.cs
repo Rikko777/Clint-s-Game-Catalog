@@ -5,7 +5,11 @@ using ClintsCatalog.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+  Args = args,
+  EnvironmentName = "Development"
+});
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
