@@ -1,12 +1,43 @@
 @inherits LayoutComponentBase
-<MudThemeProvider />
+
+<MudThemeProvider Theme="_lgrTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
+
 <MudLayout>
-    <MudAppBar Elevation="1">
-        <MudText Typo="Typo.h5" Class="ml-3">🎮 Clint's Game Catalog</MudText>
+    <MudAppBar Elevation="4" Style="background-color: #1a1008;">
+        <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="2">
+            <MudText Typo="Typo.h6" Style="color:#f5a623; font-family:'Courier New', monospace; font-weight:bold; letter-spacing:2px;">
+                📺 LGR GAME CATALOG
+            </MudText>
+        </MudStack>
     </MudAppBar>
-    <MudMainContent Class="mt-16 pa-4">
+    <MudMainContent Class="mt-16 pa-4" Style="background-color: #1c1c1c; min-height: 100vh;">
         @Body
     </MudMainContent>
 </MudLayout>
+
+@code {
+    private MudTheme _lgrTheme = new MudTheme()
+    {
+        Palette = new PaletteLight()
+        {
+            Primary = "#f5a623",
+            PrimaryContrastText = "#1a1008",
+            Secondary = "#c47d0e",
+            Background = "#1c1c1c",
+            Surface = "#2a2a2a",
+            AppbarBackground = "#1a1008",
+            AppbarText = "#f5a623",
+            DrawerBackground = "#1a1008",
+            DrawerText = "#f5a623",
+            TextPrimary = "#e8d5b0",
+            TextSecondary = "#a89070",
+            ActionDefault = "#f5a623",
+            LinesDefault = "#3a3020",
+            TableLines = "#3a3020",
+            Divider = "#3a3020",
+            OverlayDark = "rgba(26,16,8,0.8)",
+        }
+    };
+}

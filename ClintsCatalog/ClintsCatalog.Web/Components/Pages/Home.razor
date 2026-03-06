@@ -1,26 +1,34 @@
 @page "/"
-
 <PageTitle>Clint's Game Catalog</PageTitle>
-
 <MudStack Row="true" Class="mb-4" AlignItems="AlignItems.Center">
-    <MudText Typo="Typo.h4">Game Catalog</MudText>
+    <MudText Typo="Typo.h4" Style="font-family:'Courier New',monospace; color:#f5a623; letter-spacing:3px; text-transform:uppercase;">
+        Game Catalog
+    </MudText>
     <MudSpacer />
     <MudButton Variant="Variant.Filled" Color="Color.Primary"
                StartIcon="@Icons.Material.Filled.Add" OnClick="OpenAddDialog">
         Add Game
     </MudButton>
 </MudStack>
-
-<MudPaper Class="pa-4 mb-4" Elevation="2">
+<MudPaper Class="pa-4 mb-4" Elevation="2"
+          Style="background-color: #1a1008; border: 1px solid #f5a623; border-radius: 0;">
     <MudGrid>
         <MudItem xs="12" md="6">
             <MudTextField T="string" Label="Search by title, publisher or developer"
                           Immediate="true" DebounceInterval="300" TextChanged="ApplyFilter"
-                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" />
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+                          Variant="Variant.Outlined"
+                          Style="font-family:'Courier New',monospace;"
+                          AdornmentColor="Color.Primary" />
         </MudItem>
         <MudItem xs="12" md="3">
             <MudSelect T="MediaType?" Value="_selectedMedia" Label="Media"
-                       Clearable="true" ValueChanged="OnMediaChanged">
+                       Clearable="true" ValueChanged="OnMediaChanged"
+                       Variant="Variant.Outlined"
+                       Style="font-family:'Courier New',monospace;"
+                       PopoverClass="lgr-popover"
+                       AnchorOrigin="Origin.BottomLeft"
+                       TransformOrigin="Origin.TopLeft">
                 @foreach (MediaType media in Enum.GetValues(typeof(MediaType)))
                 {
                     <MudSelectItem T="MediaType?" Value="@((MediaType?)media)">@media</MudSelectItem>
@@ -29,7 +37,12 @@
         </MudItem>
         <MudItem xs="12" md="3">
             <MudSelect T="PackagingType?" Value="_selectedPackaging" Label="Packaging"
-                       Clearable="true" ValueChanged="OnPackagingChanged">
+                       Clearable="true" ValueChanged="OnPackagingChanged"
+                       Variant="Variant.Outlined"
+                       Style="font-family:'Courier New',monospace;"
+                       PopoverClass="lgr-popover"
+                       AnchorOrigin="Origin.BottomLeft"
+                       TransformOrigin="Origin.TopLeft">
                 @foreach (PackagingType packaging in Enum.GetValues(typeof(PackagingType)))
                 {
                     <MudSelectItem T="PackagingType?" Value="@((PackagingType?)packaging)">@packaging</MudSelectItem>
@@ -38,7 +51,6 @@
         </MudItem>
     </MudGrid>
 </MudPaper>
-
 <MudDataGrid T="GameTitle" Items="@_games" SortMode="SortMode.Multiple"
              Hover="true" Striped="true" Elevation="2">
     <Columns>
