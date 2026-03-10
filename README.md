@@ -1,8 +1,6 @@
 # Clint's Game Catalog
 
-A physical PC game collection tracker built as a personal project, themed around [LGR (Lazy Game Reviews)](https://www.youtube.com/@LGR) — Clint Basinger's YouTube channel dedicated to retro PC gaming.
-
----
+A physical PC game collection tracker built as a personal project, themed around [LGR (Lazy Game Reviews)](https://www.youtube.com/@LGR) 
 
 ## Overview
 
