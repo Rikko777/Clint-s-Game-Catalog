@@ -56,7 +56,8 @@ Tracks a physical PC game collection — CDs, diskettes, Big Boxes, Jewel Cases 
 5. App runs at `http://localhost:5000`
 
 ### Running Tests
+
+Open the Developer Command Prompt in Visual Studio and navigate to the `ClintsCatalog.Tests` folder, then run:
 ```bash
-cd ClintsCatalog\ClintsCatalog.Tests
 dotnet test
 ```
